@@ -18,7 +18,7 @@ import lombok.ToString;
 public class Article {
 
     @Id // 대표값 지정
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // IDENTITY 전략 추가
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // DB가 id를 자동 생성 어노테이션
     private Long id;
 
     @Column
@@ -27,4 +27,6 @@ public class Article {
     @Column
     private String content;
 
+    public void patch(Article article) {
+    }
 }

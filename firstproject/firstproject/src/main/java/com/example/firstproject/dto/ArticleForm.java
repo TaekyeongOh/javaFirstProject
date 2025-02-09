@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class ArticleForm {
 
     private Long id;

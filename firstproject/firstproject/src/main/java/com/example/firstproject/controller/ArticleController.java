@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.swing.text.html.Option;
 import java.util.ArrayList;
@@ -103,5 +104,21 @@ public class ArticleController {
         // 3: 수정 결과 페이지로 리다이렉트
         // return "redirect:/articles/" + articleEntity.getId();
 
+    }
+
+    @GetMapping("/articles/{id}/delete")
+    public String delete(@PathVariable Long id, RedirectAttributes rttr){
+        log.info("삭제 요청 발생");
+
+        // 1. 삭제 대상 가져옴
+        Article target = articleRepository.findById(id).orElse(null);
+        log.info(target.toString());
+        // 2. 대상을 삭제
+        if(target!=null){
+            articleRepository.delete(target);
+            rttr.addFlashAttribute("msg","삭제가 완료됐습니다.");
+        }
+        // 3. 결과 페이지로 리다이렉트
+        return "redirect:/articles";
     }
 }
