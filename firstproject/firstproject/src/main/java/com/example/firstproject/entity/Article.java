@@ -28,5 +28,8 @@ public class Article {
     private String content;
 
     public void patch(Article article) {
+        this.id = article.getId();
+        this.title = article.title;
+        this.content = article.content;;
     }
 }
